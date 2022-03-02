@@ -1,12 +1,12 @@
 import { Button, Grid, ThemeProvider } from "@mui/material";
 import theme from "./Utils/Theme";
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AuthSignUp } from "../Redux";
 
 function App() {
   const dispatch = useDispatch();
-  useEffect(() => {}, []);
+  const loggedIn = useSelector((state) => state.user.loggedIn);
 
   return (
     <ThemeProvider theme={theme}>
@@ -14,6 +14,7 @@ function App() {
         Hello World
         <Button
           onClick={() => {
+            console.log("hello", loggedIn);
             dispatch(AuthSignUp());
           }}
         >

@@ -8,12 +8,13 @@ import theme from "../App/Utils/Theme";
 import createEmotionCache from "../Server/createEmotionCache";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
+import rootReducer from "../Redux/RootReducer";
 
 const cache = createEmotionCache();
 
 function Main() {
   // Create Redux store with state injected by the server
-  const store = createStore(counterApp, window.__PRELOADED_STATE__);
+  const store = createStore(rootReducer, window.__PRELOADED_STATE__);
 
   // Allow the passed state to be garbage-collected
   delete window.__PRELOADED_STATE__;
